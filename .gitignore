@@ -1,0 +1,9 @@
+# Relatórios gerados localmente (podem conter nome do equipamento/usuário)
+output/
+*.local.html
+
+# Sistema / Python helper
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

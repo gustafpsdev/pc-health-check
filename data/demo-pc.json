@@ -1,0 +1,47 @@
+{
+  "_meta": {
+    "note": "Snapshot ficticio de um PC de escritorio lento, para demonstracao e CI. Nenhum dado real."
+  },
+  "computer": {
+    "hostname": "DEMO-PC-01",
+    "manufacturer": "Dell Inc.",
+    "model": "OptiPlex 3060"
+  },
+  "os": {
+    "caption": "Microsoft Windows 10 Pro",
+    "version": "10.0.19045",
+    "build": "19045",
+    "lastBoot": "2026-08-31T08:12:00",
+    "uptimeDays": 21
+  },
+  "cpu": {
+    "name": "Intel(R) Core(TM) i5-8500 CPU @ 3.00GHz",
+    "cores": 6,
+    "logical": 6,
+    "maxClockGhz": 3.0,
+    "loadPercent": 47
+  },
+  "memory": {
+    "totalGB": 8.0,
+    "usedGB": 7.2,
+    "usedPercent": 90
+  },
+  "storage": {
+    "systemDiskType": "HDD",
+    "health": "Healthy"
+  },
+  "disks": [
+    { "drive": "C:", "totalGB": 465.0, "freeGB": 27.9, "freePercent": 6 }
+  ],
+  "gpu": ["Intel(R) UHD Graphics 630"],
+  "startupCount": 14,
+  "topProcesses": [
+    { "name": "chrome", "memMB": 1420 },
+    { "name": "Teams", "memMB": 910 },
+    { "name": "OUTLOOK", "memMB": 640 },
+    { "name": "explorer", "memMB": 310 },
+    { "name": "MsMpEng", "memMB": 280 }
+  ],
+  "lastUpdateDays": 83,
+  "tempGB": 6.4
+}

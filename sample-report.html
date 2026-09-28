@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico de PC</title>
+<style>
+  :root{--bg:#f4f6fb;--card:#fff;--ink:#1a2233;--muted:#5b6678;--line:#e6e9f0;
+    --brand:#2f5bea;--red:#e5484d;--amber:#f5a623;--green:#22a06b;--blue:#2f5bea}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;line-height:1.5}
+  .wrap{max-width:1000px;margin:0 auto;padding:32px 20px 64px}
+  h1{font-size:1.5rem;margin:0}
+  .sub{color:var(--muted);font-size:.9rem;margin-top:4px}
+  h2{font-size:1.1rem;margin:26px 0 10px}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:20px 0}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center}
+  .kpi .value{font-size:1.9rem;font-weight:800}
+  .kpi .label{color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.03em;margin-top:2px}
+  .kpi.green .value{color:var(--green)}.kpi.amber .value{color:var(--amber)}.kpi.red .value{color:var(--red)}
+  .score-ring{font-size:2.4rem;font-weight:800}
+  section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin:14px 0}
+  table{width:100%;border-collapse:collapse;font-size:.92rem}
+  td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  td:first-child{color:var(--muted);width:210px}
+  td.num{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
+  .finding{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0}
+  .finding.sev-Alta{border-left-color:var(--red)}
+  .finding.sev-Media{border-left-color:var(--amber)}
+  .finding.sev-Baixa{border-left-color:var(--blue)}
+  .f-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+  .area{display:inline-block;background:#eef1f8;color:var(--muted);font-size:.7rem;padding:2px 8px;border-radius:6px;margin-right:8px;text-transform:uppercase;letter-spacing:.03em}
+  .f-title{font-weight:600}
+  .f-detail{margin:8px 0 6px;color:#333}
+  .f-rec{color:#333;font-size:.92rem}
+  .f-steps{margin:4px 0 0;padding-left:18px}
+  .f-steps li{margin:3px 0}
+  code{background:#eef1f8;padding:1px 6px;border-radius:4px;font-family:"Consolas",monospace;font-size:.86em;color:#12203f}
+  .badge{display:inline-block;padding:3px 12px;border-radius:999px;font-size:.76rem;font-weight:700}
+  .b-red{background:#fdecec;color:var(--red)}.b-amber{background:#fdf3e0;color:#b6790f}
+  .b-blue{background:#e9eefc;color:var(--brand)}.b-gray{background:#eef1f8;color:var(--muted)}
+  .ok{color:var(--green);font-weight:600}
+  .guide{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+  .g-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .g-card h3{margin:0 0 8px;font-size:1rem;color:var(--brand)}
+  .g-card ol{margin:0;padding-left:18px}
+  .g-card li{margin:5px 0;font-size:.9rem}
+  .src{color:var(--muted);font-size:.78rem;margin-top:10px}
+  footer{color:var(--muted);font-size:.8rem;text-align:center;margin-top:26px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Diagnóstico de Saúde &mdash; PC</h1>
+  <div class="sub">PC de demonstração (fictício) &middot; gerado em 22/09/2026 08:34</div>
+
+  <div class="kpis">
+    <div class="kpi red"><div class="value score-ring">10</div><div class="label">Nota de saúde (Ruim)</div></div>
+    <div class="kpi red"><div class="value">3</div><div class="label">Prioridade alta</div></div>
+    <div class="kpi amber"><div class="value">2</div><div class="label">Prioridade média</div></div>
+    <div class="kpi"><div class="value">2</div><div class="label">Prioridade baixa</div></div>
+  </div>
+
+  <h2>Achados e como resolver</h2>
+    <div class="finding sev-Alta">
+      <div class="f-head">
+        <div><span class="area">Disco</span><span class="f-title">Disco C: quase cheio</span></div>
+        <span class="badge b-red">Alta</span>
+      </div>
+      <p class="f-detail">Apenas 6% livres (27,9 GB de 465,0 GB). Abaixo de 10% o Windows fica lento.</p>
+      <div class="f-rec"><b>Como resolver:</b><ul class="f-steps"><li>Ativar o Sensor de Armazenamento: Configurações &gt; Sistema &gt; Armazenamento.</li><li>Rodar a Limpeza de Disco: tecle Win+R, digite <code>cleanmgr</code>, escolha o disco C:.</li><li>Limpar temporários: Win+R &gt; <code>%temp%</code> (apagar tudo) e depois <code>C:\Windows\Temp</code>.</li><li>Esvaziar a Lixeira e mover arquivos grandes para outro disco ou para a nuvem.</li></ul></div>
+    </div>
+    <div class="finding sev-Alta">
+      <div class="f-head">
+        <div><span class="area">Disco</span><span class="f-title">Disco do sistema é HDD (mecânico)</span></div>
+        <span class="badge b-red">Alta</span>
+      </div>
+      <p class="f-detail">O sistema roda em HDD. Este costuma ser o maior gargalo de lentidão — trocar por SSD é o upgrade de melhor custo-benefício.</p>
+      <div class="f-rec"><b>Como resolver:</b><ul class="f-steps"><li>Escolher um SSD compatível (SATA 2,5&quot; ou NVMe, conforme a placa).</li><li>Migrar com software de clonagem, ou reinstalar o Windows limpo no SSD.</li><li>Manter o HDD como disco secundário para arquivos.</li></ul></div>
+    </div>
+    <div class="finding sev-Alta">
+      <div class="f-head">
+        <div><span class="area">Memória</span><span class="f-title">Memória RAM sob forte pressão</span></div>
+        <span class="badge b-red">Alta</span>
+      </div>
+      <p class="f-detail">90% da RAM em uso (7,2 GB de 8,0 GB).</p>
+      <div class="f-rec"><b>Como resolver:</b><ul class="f-steps"><li>Fechar abas e programas não usados (Ctrl+Shift+Esc &gt; Processos, ordenar por Memória).</li><li>Desativar apps em segundo plano: Configurações &gt; Aplicativos &gt; app &gt; Opções avançadas.</li><li>Se for recorrente, aumentar a RAM (idealmente 16 GB).</li></ul></div>
+    </div>
+    <div class="finding sev-Media">
+      <div class="f-head">
+        <div><span class="area">Inicialização</span><span class="f-title">Muitos programas na inicialização</span></div>
+        <span class="badge b-amber">Média</span>
+      </div>
+      <p class="f-detail">14 itens iniciam junto com o Windows, deixando o boot lento.</p>
+      <div class="f-rec"><b>Como resolver:</b><ul class="f-steps"><li>Abrir o Gerenciador de Tarefas (Ctrl+Shift+Esc) e ir na aba Inicializar.</li><li>Clicar com o botão direito nos itens de 'Alto impacto' desnecessários &gt; Desabilitar.</li></ul></div>
+    </div>
+    <div class="finding sev-Media">
+      <div class="f-head">
+        <div><span class="area">Atualizações</span><span class="f-title">Windows sem atualizar há 83 dias</span></div>
+        <span class="badge b-amber">Média</span>
+      </div>
+      <p class="f-detail">Correções de segurança e desempenho ficam pendentes.</p>
+      <div class="f-rec"><b>Como resolver:</b><ul class="f-steps"><li>Configurações &gt; Windows Update &gt; Verificar se há atualizações.</li><li>Conferir 'Opções avançadas' &gt; 'Atualizações opcionais' para drivers.</li></ul></div>
+    </div>
+    <div class="finding sev-Baixa">
+      <div class="f-head">
+        <div><span class="area">Sistema</span><span class="f-title">Sem reiniciar há 21 dias</span></div>
+        <span class="badge b-blue">Baixa</span>
+      </div>
+      <p class="f-detail">Reiniciar resolve lentidão acumulada e aplica atualizações pendentes.</p>
+      <div class="f-rec"><b>Como resolver:</b><ul class="f-steps"><li>Salvar o trabalho e reiniciar (Iniciar &gt; Energia &gt; Reiniciar).</li></ul></div>
+    </div>
+    <div class="finding sev-Baixa">
+      <div class="f-head">
+        <div><span class="area">Limpeza</span><span class="f-title">Arquivos temporários acumulados</span></div>
+        <span class="badge b-blue">Baixa</span>
+      </div>
+      <p class="f-detail">6,4 GB em arquivos temporários.</p>
+      <div class="f-rec"><b>Como resolver:</b><ul class="f-steps"><li>Ativar o Sensor de Armazenamento (Configurações &gt; Sistema &gt; Armazenamento).</li><li>Ou rodar este script com <code>-Clean</code> para limpar os temporários com segurança.</li></ul></div>
+    </div>
+
+  <h2>Guia de otimização passo a passo</h2>
+    <div class="guide">
+      <div class="g-card">
+        <h3>Rápido (5&ndash;10 min)</h3>
+        <ol>
+          <li>Reiniciar o computador (Iniciar &gt; Energia &gt; Reiniciar).</li>
+          <li>Fechar programas e abas pesados (Ctrl+Shift+Esc &gt; Processos).</li>
+          <li>Rodar o Windows Update (Configurações &gt; Windows Update).</li>
+          <li>Verificação rápida de vírus (Segurança do Windows &gt; Proteção contra vírus e ameaças).</li>
+        </ol>
+      </div>
+      <div class="g-card">
+        <h3>Limpeza de disco</h3>
+        <ol>
+          <li>Ativar o Sensor de Armazenamento (Configurações &gt; Sistema &gt; Armazenamento) — limpa temporários e Lixeira sozinho.</li>
+          <li>Limpeza de Disco: Win+R &gt; <code>cleanmgr</code> &gt; escolher C:.</li>
+          <li>Temporários: Win+R &gt; <code>%temp%</code> e <code>C:\Windows\Temp</code> (apagar).</li>
+          <li>Esvaziar a Lixeira; desinstalar apps sem uso.</li>
+        </ol>
+      </div>
+      <div class="g-card">
+        <h3>Manutenção e ajustes</h3>
+        <ol>
+          <li>Desabilitar programas na inicialização (Ctrl+Shift+Esc &gt; Inicializar).</li>
+          <li>Otimizar unidades: <code>dfrgui</code> (SSD faz TRIM, HDD desfragmenta).</li>
+          <li>Integridade do sistema (admin): <code>sfc /scannow</code> e <code>DISM /Online /Cleanup-Image /RestoreHealth</code>.</li>
+          <li>Melhor desempenho: Configurações &gt; Sistema &gt; Energia &gt; Melhor desempenho.</li>
+          <li>Upgrades de maior impacto: SSD e mais RAM.</li>
+        </ol>
+      </div>
+    </div>
+    <p class="src">Guia baseado nas orientações oficiais da Microsoft (support.microsoft.com).</p>
+
+  <h2>Especificações</h2>
+  <section>
+    <table>
+      <tr><td>Equipamento</td><td>Dell Inc. OptiPlex 3060</td></tr>
+      <tr><td>Sistema</td><td>Microsoft Windows 10 Pro (build 19045)</td></tr>
+      <tr><td>Processador</td><td>Intel(R) Core(TM) i5-8500 CPU @ 3.00GHz &mdash; 6 núcleos / 6 threads</td></tr>
+      <tr><td>Memória RAM</td><td>8,0 GB (em uso: 90%)</td></tr>
+      <tr><td>Disco do sistema</td><td>HDD &mdash; saúde: Healthy</td></tr>
+      <tr><td>Vídeo</td><td>Intel(R) UHD Graphics 630</td></tr>
+      <tr><td>Ligado há</td><td>21 dias</td></tr>
+      <tr><td>Última atualização</td><td>83 dias atrás</td></tr>
+      <tr><td>Programas na inicialização</td><td>14</td></tr>
+      <tr><td>Processos que mais consomem</td><td>chrome (1420 MB) · Teams (910 MB) · OUTLOOK (640 MB) · explorer (310 MB) · MsMpEng (280 MB)</td></tr>
+    </table>
+  </section>
+
+  <h2>Discos</h2>
+  <section>
+    <table class="disk">
+      <tr><td>Unidade</td><td class="num">Total</td><td class="num">Livre</td><td class="num">% livre</td></tr>
+<tr><td>C:</td><td class='num'>465,0 GB</td><td class='num'>27,9 GB</td><td class='num'>6%</td></tr>
+    </table>
+  </section>
+
+  <footer>
+    Gerado por <b>Get-PCHealthReport.ps1</b> &middot; Gustavo Paiva
+  </footer>
+</div>
+</body>
+</html>
